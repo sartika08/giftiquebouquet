@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Detail Produk - Giftique Bouquet</title>
+  <meta name="description" content="Detail informasi produk buket premium dari Giftique Bouquet.">
+
+  <link href="assets/img/logo giftique.jpeg" rel="icon">
+  <link href="assets/img/logo giftique.jpeg" rel="apple-touch-icon">
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Marcellus&display=swap"
+    rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    .details-card {
+      background: #ffffff;
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .img-detail-wrapper {
+      position: relative;
+      padding-top: 100%;
+      background: #fafafa;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .img-detail-wrapper img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge-detail-category {
+      background-color: rgba(255, 107, 129, 0.1);
+      color: #ff6b81;
+      padding: 6px 15px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .price-tag {
+      color: #ff6b81;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .btn-back {
+      border: 2px solid #ff6b81;
+      color: #ff6b81;
+      background: transparent;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back:hover {
+      background-color: #ff6b81;
+      color: white;
+    }
+
+    .btn-add-cart {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      font-weight: 600;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-add-cart:hover {
+      background-color: #e0586d;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 129, 0.3);
+    }
+  </style>
+</head>
+
+<body style="background-color: #fff5f6;">
+
+  <!-- ================= HEADER SECTION ================= -->
+  <header id="header" class="header d-flex align-items-center position-relative flex-column"
+    style="background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000;">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between py-3">
+
+      <a href="index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+        <img src="assets/img/logo giftique.jpeg" alt="Logo Giftique Bouquet"
+          style="max-height: 40px; margin-right: 8px; border-radius: 50%;">
+        <h1 style="color: #ff6b81; font-weight: bold; margin: 0; font-size: 24px; font-family: 'Marcellus', serif;">
+          Giftique Bouquet</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul class="d-flex list-unstyled gap-4 m-0 align-items-center">
+          <li><a href="index.html" style="color: #333; text-decoration: none;">Home</a></li>
+          <li><a href="index.html#services" style="color: #333; text-decoration: none;">Cara Order</a></li>
+          <li><a href="about.html" style="color: #333; text-decoration: none;">Tentang Kami</a></li>
+          <li><a href="blog.html" class="active"
+              style="color: #ff6b81; font-weight: bold; text-decoration: none;">Katalog</a></li>
+          <li><a href="contact.html" style="color: #333; text-decoration: none;">Hubungi Kami</a></li>
+        </ul>
+      </nav>
+
+      <!-- Ikon Keranjang Belanja -->
+      <div class="d-flex align-items-center">
+        <a href="cart.html" class="position-relative" style="color: #ff6b81; text-decoration: none; font-size: 22px;"
+          aria-label="Keranjang Belanja">
+          <i class="bi bi-bag-heart-fill"></i>
+          <span id="badge-counter-header"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+            style="font-size: 10px; padding: 3px 6px;">
+            0
+          </span>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <main class="py-5">
+    <div class="container">
+
+      <!-- Area Pesan Jika Produk Tidak Ditemukan -->
+      <div id="error-message" class="alert alert-danger text-center d-none my-5 py-4 style=" border-radius: 15px;">
+        <i class="bi bi-exclamation-triangle-fill display-4 d-block mb-3"></i>
+        <h4>Ups! Produk tidak ditemukan</h4>
+        <p class="text-muted">Produk yang Anda cari tidak terdaftar atau telah dihapus.</p>
+        <a href="blog.html" class="btn btn-danger mt-2 px-4"
+          style="background-color: #ff6b81; border: none; border-radius: 8px;">Kembali ke Katalog</a>
+      </div>
+
+      <!-- Konten Utama Detail Produk -->
+      <div id="product-details-content" class="card details-card p-4 p-md-5 d-none">
+        <div class="row g-4 lg-g-5 align-items-center">
+
+          <!-- Bagian Foto Produk (Kiri) -->
+          <div class="col-md-6">
+            <div class="img-detail-wrapper shadow-sm">
+              <img id="detail-img" src="" alt="Foto Produk">
+            </div>
+          </div>
+
+          <!-- Bagian Info Teks Produk (Kanan) -->
+          <div class="col-md-6">
+            <div class="ps-md-4">
+              <span id="detail-category" class="badge-detail-category mb-3">Kategori</span>
+              <h2 id="detail-title" class="fw-bold text-dark mb-3"
+                style="font-family: 'Marcellus', serif; font-size: 32px;">Nama Produk</h2>
+
+              <div class="mb-4">
+                <span id="detail-price" class="price-tag">Rp 0</span>
+                <span id="jasa-note" class="text-muted small ms-2 d-none">(Jasa Pembuatan)</span>
+              </div>
+
+              <hr class="text-muted opacity-15 my-4">
+
+              <h5 class="fw-bold text-dark mb-2">Deskripsi Produk:</h5>
+              <p id="detail-description" class="text-muted lh-lg mb-4" style="font-size: 15px;">Penjelasan lengkap
+                produk...</p>
+
+              <hr class="text-muted opacity-15 my-4">
+
+              <!-- Tombol Aksi -->
+              <div class="d-flex flex-wrap gap-3">
+                <a href="blog.html" class="btn btn-back px-4 py-2.5 flex-fill text-center">
+                  <i class="bi bi-arrow-left me-2"></i>Kembali
+                </a>
+                <button id="btn-add-to-cart-dynamic" class="btn btn-add-cart px-5 py-2.5 flex-fill text-center">
+                  <i class="bi bi-bag-plus-fill me-2"></i>Masukkan Keranjang
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ================= FOOTER SECTION ================= -->
+  <footer style="background-color: #1a1a1a; color: #ffffff;" class="py-5">
+    <div class="container">
+      <div class="row gy-4">
+
+        <div class="col-lg-4 col-md-6">
+          <h4 style="color: #ff6b81; font-weight: bold; font-size: 20px; font-family: 'Marcellus', serif;">Giftique
+            Bouquet</h4>
+          <p class="mt-3" style="font-size: 14px; color: #e0e0e0; line-height: 1.6;">Solusi kado hadiah estetik,
+            berkualitas, dan terjangkau untuk menemani hari bahagia orang-orang tersayang Anda.</p>
+
+          <!-- Tombol Medsos: Hanya IG dan WA -->
+          <div class="d-flex mt-4 gap-2">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/giftique.bouquet/" target="_blank"
+              class="d-flex align-items-center justify-content-center rounded-circle"
+              style="background-color: #ff6b81; color: white; width: 36px; height: 36px; text-decoration: none;"
+              title="Instagram Giftique Bouquet">
+              <i class="bi bi-instagram"></i>
+            </a>
+            <!-- WhatsApp (Dengan template pesan otomatis) -->
+            <a href="https://wa.me/6282340433122?text=Halo%20Giftique%20Bouquet,%20saya%20tertarik%20untuk%20tanya-tanya%20produk%20buketnya"
+              target="_blank" class="d-flex align-items-center justify-content-center rounded-circle"
+              style="background-color: #ff6b81; color: white; width: 36px; height: 36px; text-decoration: none;"
+              title="WhatsApp Giftique Bouquet">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-3">
+          <h4 style="color: #ff6b81; font-weight: bold; font-size: 20px;">Navigasi</h4>
+          <ul class="list-unstyled mt-3 d-flex flex-column gap-2" style="font-size: 14px;">
+            <li><a href="index.html" style="color: #e0e0e0; text-decoration: none;">Home</a></li>
+            <li><a href="index.html#workflow-section" style="color: #e0e0e0; text-decoration: none;">Cara Pemesanan</a>
+            </li>
+            <li><a href="about.html" style="color: #e0e0e0; text-decoration: none;">Tentang Kami</a></li>
+            <li><a href="blog.html" style="color: #e0e0e0; text-decoration: none;">Katalog</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-3" style="color: #e0e0e0; font-size: 14px;">
+          <h4 style="color: #ff6b81; font-weight: bold; font-size: 20px;">Hubungi Kontak</h4>
+          <p class="mt-3 mb-2"><strong style="color: #ffffff;">Alamat:</strong> Telaga Bertong, Kec. Taliwang, KSB</p>
+          <p class="mb-2"><strong style="color: #ffffff;">WhatsApp:</strong> +62 823-4043-3122</p>
+          <p class="mb-0"><strong style="color: #ffffff;">Instagram:</strong> @giftique.bouquet</p>
+        </div>
+
+      </div>
+      <hr style="border-color: rgba(255, 255, 255, 0.15);" class="my-4">
+      <p class="text-center m-0" style="font-size: 13px; color: #b0b0b0;">&copy; 2026 Giftique Bouquet. All Rights
+        Reserved.</p>
+    </div>
+  </footer>
+  <!-- ================= LOGIC ENGINE JAVASCRIPT ================= -->
+  <script>
+    // 1. Database Lokal Terintegrasi Berisi 27 Produk
+    const DATABASE_PRODUK = {
+      // BUKET BUNGA
+      "bunga-1": { nama: "Artificial Rose Soft Pink", kategori: "Buket Bunga", harga: 225000, gambar: "assets/img/bunga-1.jpg", deskripsi: "Buket mawar buatan (artificial) berwarna soft pink berkualitas tinggi dipadukan dengan bahan kain wrapping cellophane premium. Sangat kokoh, elegan, tidak layu, dan ideal sebagai hadiah abadi." },
+      "bunga-2": { nama: "White Tulip Sunshine", kategori: "Buket Bunga", harga: 75000, gambar: "assets/img/bunga-2.jpg", deskripsi: "Kombinasi bunga tulip putih dan sentuhan warna pink cerah yang memancarkan kemewahan minimalis, sangat pas untuk melengkapi momen spesial sahabat terdekat." },
+      "bunga-3": { nama: "Red Rose Elegant", kategori: "Buket Bunga", harga: 210000, gambar: "assets/img/bunga-3.jpg", deskripsi: "Mawar merah artificial tebal yang dikemas dalam wrapping bold hitam misterius nan elegan, melambangkan ketulusan rasa dan kasih sayang yang mendalam." },
+      "bunga-4": { nama: "Blue Ocean Hydrangea", kategori: "Buket Bunga", harga: 100000, gambar: "assets/img/bunga-4.jpg", deskripsi: "Perpaduan warna biru laut dan putih yang memberikan kesan sangat adem dan premium." },
+      "bunga-5": { nama: "Lavender Dream", kategori: "Buket Bunga", harga: 75000, gambar: "assets/img/bunga-5.jpg", deskripsi: "Buket bertema ungu pastel estetik, sangat pas untuk kado sempro sahabat." },
+      "bunga-6": { nama: "Sunflower Radiant", kategori: "Buket Bunga", harga: 85000, gambar: "assets/img/bunga-6.jpg", deskripsi: "Bunga matahari artificial kuning cerah pembawa energi ceria bagi wisudawan." },
+      "bunga-7": { nama: "Daisy Pastel Minimalist", kategori: "Buket Bunga", harga: 60000, gambar: "assets/img/bunga-7.jpg", deskripsi: "Rangkaian bunga daisy kecil minimalis dengan wrapping korea yang manis." },
+      "bunga-8": { nama: "Peony Luxury Maroon", kategori: "Buket Bunga", harga: 110000, gambar: "assets/img/bunga-8.jpg", deskripsi: "Bunga peony tiruan dipadu warna pink nan eksklusif." },
+      "bunga-9": { nama: "Cotton Flower Aesthetic", kategori: "Buket Bunga", harga: 70000, gambar: "assets/img/bunga-9.jpg", deskripsi: "Buket bunga kapas kering gaya rustic yang sangat hits dan tahan selamanya." },
+
+      // BUKET UANG
+      "uang-1": { nama: "Elegant Money Bouquet", kategori: "Buket Uang", harga: 120000, gambar: "assets/img/uang-1.jpg", deskripsi: "Jasa pembuatan buket uang dengan lembaran yang ditata rapi melingkar tanpa merusak fisik uang asli karena menggunakan pelindung plastik khusus per lembar." },
+      "uang-2": { nama: "Money Bouquet Custom", kategori: "Buket Uang", harga: 150000, gambar: "assets/img/uang-2.jpg", deskripsi: "Susunan melingkar dengan perpaduan bunga ungu." },
+      "uang-3": { nama: "Silver Lining Bouquet", kategori: "Buket Uang", harga: 120000, gambar: "assets/img/uang-3.jpg", deskripsi: "Menggunakan pecahan uang Rp20.000 bernuansa sejuk." },
+      "uang-4": { nama: "Heart Shape Money", kategori: "Buket Uang", harga: 350000, gambar: "assets/img/uang-4.jpg", deskripsi: "Kreativitas tinggi merangkai lembaran uang membentuk pola hati/love." },
+      "uang-5": { nama: "Butterfly Money Bouquet", kategori: "Buket Uang", harga: 240000, gambar: "assets/img/uang-5.jpg", deskripsi: "Dilengkapi hiasan kupu-kupu bersinar led malam hari yang super cantik." },
+      "uang-6": { nama: "Mini Roll Money", kategori: "Buket Uang", harga: 80000, gambar: "assets/img/uang-6.jpg", deskripsi: "Model gulungan kecil melingkar ringkas, simpel, hemat tempat, namun mewah." },
+      "uang-7": { nama: "Money Blossom Rose", kategori: "Buket Uang", harga: 160000, gambar: "assets/img/uang-7.jpg", deskripsi: "Uang dilipat rapi menyerupai kelopak bunga mawar mekar asli asli." },
+      "uang-8": { nama: "Giant Wealth Fan", kategori: "Buket Uang", harga: 450000, gambar: "assets/img/uang-8.jpg", deskripsi: "Buket uang berukuran jumbo super megah." },
+      "uang-9": { nama: "Single Midnight Money", kategori: "Buket Uang", harga: 90000, gambar: "assets/img/uang-9.jpg", deskripsi: "Model berbentuk bulan sabit dengan background kertas pembungkus gelap." },
+
+      // BUKET SNACK
+      "snack-1": { nama: "Sweet Chocolate Bouquet", kategori: "Buket Snack", harga: 200000, gambar: "assets/img/snack-1.jpg", deskripsi: "Isi cokelat favorit digabung wrapping bernuansa ungu muda." },
+      "snack-2": { nama: "Buket Snack Oreo", kategori: "Buket Snack", harga: 60000, gambar: "assets/img/snack-2.jpg", deskripsi: "Isi snack oreo bertema serba biru cerah senada." },
+      "snack-3": { nama: "Green Snack Bouquet", kategori: "Buket Snack", harga: 70000, gambar: "assets/img/snack-3.jpg", deskripsi: "Isi biskuit dan wafer warna hijau dengan wrapping hijau sage." },
+      "snack-4": { nama: "Buket Snack Pink", kategori: "Buket Snack", harga: 150000, gambar: "assets/img/snack-4.jpg", deskripsi: "Kumpulan snack warna pink dengan wrapping senada." },
+      "snack-5": { nama: "Buket Kopi", kategori: "Buket Snack", harga: 80000, gambar: "assets/img/snack-5.jpg", deskripsi: "Kombinasi kopi sachet premium cocok untuk dosen pembimbing." },
+      "snack-6": { nama: "Buket Yogurt dan Susu", kategori: "Buket Snack", harga: 45000, gambar: "assets/img/snack-6.jpg", deskripsi: "Isi yogurt dan susu, terkesan sangat bersih manis." },
+      "snack-7": { nama: "Jumbo Family Snack", kategori: "Buket Snack", harga: 350000, gambar: "assets/img/snack-7.jpg", deskripsi: "Buket raksasa muat sampai belasan jenis snack berukuran besar campur." },
+      "snack-8": { nama: "Healthy Fruit Combo", kategori: "Buket Snack", harga: 50000, gambar: "assets/img/snack-8.jpg", deskripsi: "Kombinasi unik snack biskuit gandum sehat dicampur pelengkap estetik." },
+      "snack-9": { nama: "Cheesy Yellow Land", kategori: "Buket Snack", harga: 45000, gambar: "assets/img/snack-9.jpg", deskripsi: "Kumpulan segala macam makanan ringan rasa keju serba kuning cerah ceria." }
+    };
+
+    // Format angka mata uang rupiah biasa
+    function formatRupiah(angka) {
+      return 'Rp ' + angka.toLocaleString('id-ID');
+    }
+
+    // 2. Main Logic: Membaca parameter ID dan merender data ke halaman
+    document.addEventListener("DOMContentLoaded", function () {
+      // Ambil nilai '?id=...' dari URL halaman browser
+      const urlParams = new URLSearchParams(window.location.search);
+      const produkId = urlParams.get('id');
+
+      const errorEl = document.getElementById('error-message');
+      const contentEl = document.getElementById('product-details-content');
+
+      // Validasi ketersediaan data ID produk di database
+      if (!produkId || !DATABASE_PRODUK[produkId]) {
+        errorEl.classList.remove('d-none');
+        perbaruiBadgeHeader();
+        return;
+      }
+
+      // Jika ID valid, ambil objek data produk
+      const produk = DATABASE_PRODUK[produkId];
+
+      // Tanam data objek ke element HTML masing-masing
+      document.getElementById('detail-img').src = produk.gambar;
+      document.getElementById('detail-img').alt = produk.nama;
+      document.getElementById('detail-title').innerText = produk.nama;
+      document.getElementById('detail-category').innerText = produk.kategori;
+      document.getElementById('detail-price').innerText = formatRupiah(produk.harga);
+      document.getElementById('detail-description').innerText = produk.deskripsi;
+
+      // Beri tanda keterangan label (Jasa) khusus untuk buket uang
+      if (produkId.startsWith('uang')) {
+        document.getElementById('jasa-note').classList.remove('d-none');
+      }
+
+      // Pasang event listener click pada tombol masukkan keranjang belanja
+      document.getElementById('btn-add-to-cart-dynamic').onclick = function () {
+        tambahKeKeranjang(produkId, produk.nama, produk.harga, produk.gambar);
+      };
+
+      // Tampilkan kontainer detail utama setelah siap
+      contentEl.classList.remove('d-none');
+      perbaruiBadgeHeader();
+    });
+
+    // 3. Fungsi Tambah Barang ke localStorage
+    function tambahKeKeranjang(id, nama, harga, gambar) {
+      let daftarKeranjang = JSON.parse(localStorage.getItem('cart_giftique_data')) || [];
+      const indeksProduk = daftarKeranjang.findIndex(item => item.id === id);
+
+      if (indeksProduk > -1) {
+        daftarKeranjang[indeksProduk].qty += 1;
+      } else {
+        daftarKeranjang.push({ id: id, nama: nama, harga: harga, gambar: gambar, qty: 1 });
+      }
+
+      localStorage.setItem('cart_giftique_data', JSON.stringify(daftarKeranjang));
+      perbaruiBadgeHeader();
+      alert(`Berhasil memasukkan "${nama}" ke keranjang belanja!`);
+    }
+
+    // 4. Sinkronisasi Hitung Jumlah Item di Badge Header
+    function perbaruiBadgeHeader() {
+      let daftarKeranjang = JSON.parse(localStorage.getItem('cart_giftique_data')) || [];
+      const totalKuantitas = daftarKeranjang.reduce((akumulator, item) => akumulator + item.qty, 0);
+
+      const elemenBadge = document.getElementById('badge-counter-header');
+      if (elemenBadge) {
+        elemenBadge.innerText = totalKuantitas;
+      }
+    }
+  </script>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

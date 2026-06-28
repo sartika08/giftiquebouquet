@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Keranjang Belanja | Giftique Bouquet E-Commerce Platform</title>
+    <meta name="description"
+        content="Tinjau daftar belanjaan buket premium Anda di Giftique Bouquet Taliwang sebelum melakukan checkout pesanan.">
+    <meta name="keywords" content="keranjang belanja, cart giftique bouquet, beli buket taliwang">
+    <meta name="author" content="Giftique Team">
+
+    <link href="assets/img/logo giftique.jpeg" rel="icon" type="image/jpeg">
+    <link href="assets/img/logo giftique.jpeg" rel="apple-touch-icon">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Marcellus&display=swap"
+        rel="stylesheet">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #ff6b81;
+            --primary-hover: #e0556a;
+            --secondary-color: #1a1a1a;
+            --accent-bg: #fff5f6;
+            --text-dark: #333333;
+            --text-muted: #666666;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--accent-bg);
+            color: var(--text-dark);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        .font-heading {
+            font-family: 'Marcellus', serif;
+        }
+
+        /* Komponen Navigasi Utama */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .navmenu ul li a {
+            color: var(--text-dark);
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navmenu ul li a:hover,
+        .navmenu ul li a.active {
+            color: var(--primary-color) !important;
+        }
+
+        /* Komponen Utama Keranjang */
+        .cart-wrapper-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.02);
+        }
+
+        .cart-thumb-img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .table-cart th {
+            background-color: #fafafa;
+            color: var(--text-dark);
+            font-weight: 600;
+            border-bottom: 2px solid #eeeeee;
+            padding: 15px;
+        }
+
+        .table-cart td {
+            padding: 20px 15px;
+            vertical-align: middle;
+        }
+
+        /* Sidebar Summary */
+        .summary-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 24px;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.02);
+            position: sticky;
+            top: 110px;
+        }
+
+        .btn-whatsapp-checkout {
+            background-color: #25d366;
+            color: #ffffff;
+            font-weight: 600;
+            padding: 14px 24px;
+            border-radius: 30px;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            width: 100%;
+        }
+
+        .btn-whatsapp-checkout.disabled {
+            background-color: #cccccc !important;
+            color: #666666 !important;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+
+        .btn-whatsapp-checkout:hover {
+            background-color: #20ba56;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header" class="header py-3">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+                <img src="assets/img/logo giftique.jpeg" alt="Logo Resmi Giftique Bouquet"
+                    style="max-height: 46px; margin-right: 12px; border-radius: 50%;">
+                <h1 style="color: var(--primary-color); font-weight: 700; margin: 0; font-size: 26px;">Giftique Bouquet
+                </h1>
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul class="d-flex list-unstyled gap-4 m-0 align-items-center">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#workflow-section">Cara Order</a></li>
+                    <li><a href="about.html">Tentang Kami</a></li>
+                    <li><a href="blog.html">Katalog</a></li>
+                    <li><a href="contact.html">Hubungi Kami</a></li>
+                </ul>
+            </nav>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="cart.html" aria-label="Keranjang Belanja" class="position-relative active"
+                    style="color: var(--primary-color); font-size: 22px;">
+                    <i class="bi bi-bag-heart-fill"></i>
+                    <span id="badge-counter-header"
+                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 10px; padding: 3px 6px;">
+                        0
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <main class="py-5">
+        <div class="container py-2">
+
+            <div class="mb-4">
+                <h2 class="fw-bold text-dark font-heading m-0" style="font-size: 32px;">Keranjang Belanja Anda</h2>
+                <p class="text-muted small">Periksa kembali item buket pilihan Anda sebelum melanjutkan pemesanan resmi.
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <div class="col-lg-8">
+                    <div class="cart-wrapper-card">
+                        <div class="table-responsive">
+                            <table class="table table-cart align-middle m-0">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="border-0">Produk</th>
+                                        <th scope="col" class="border-0">Harga</th>
+                                        <th scope="col" class="border-0" style="width: 100px;">Jumlah</th>
+                                        <th scope="col" class="border-0">Total</th>
+                                        <th scope="col" class="border-0 text-center"><i class="bi bi-trash3"></i></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="dynamic-cart-table-body">
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top border-light-subtle">
+                            <a href="blog.html" class="btn btn-link text-decoration-none small p-0"
+                                style="color: var(--primary-color); font-weight: 500;">
+                                <i class="bi bi-arrow-left me-1"></i> Kembali Belanja / Tambah Item
+                            </a>
+                            <span class="text-muted small">*Harga belum termasuk ongkos kirim atau kustom khusus.</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="summary-card">
+                        <h5 class="fw-bold text-dark mb-4 font-heading" style="font-size: 20px;">Ringkasan Belanja</h5>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-light-subtle small">
+                            <span class="text-muted">Total Kuantitas Barang</span>
+                            <span id="dynamic-summary-qty" class="fw-medium text-dark">0 Pcs</span>
+                        </div>
+
+                        <div
+                            class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom border-light-subtle small">
+                            <span class="text-muted">Biaya Cetak Kartu Ucapan</span>
+                            <span class="text-success fw-medium">FREE (Promo)</span>
+                        </div>
+
+                        <div class="d-flex justify-content-between align-items-baseline mt-4 mb-4">
+                            <span class="fw-bold text-dark fs-6">Total Pembayaran:</span>
+                            <span id="dynamic-summary-total-price" class="fw-bold text-danger fs-3">Rp 0</span>
+                        </div>
+
+                        <a id="dynamic-whatsapp-checkout-btn" href="#" target="_blank" class="btn-whatsapp-checkout">
+                            <i class="bi bi-whatsapp fs-5"></i> Kirim Order ke WhatsApp
+                        </a>
+
+                        <div class="text-center mt-3">
+                            <span style="font-size: 11px; color: var(--text-muted); line-height: 1.4; display: block;">
+                                <i class="bi bi-shield-lock-fill me-1"></i> Sistem front-end akan otomatis menyusun
+                                ringkasan list belanja menjadi pesan teks WhatsApp yang rapi dan terstruktur.
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="background-color: var(--secondary-color); color: #ffffff;" class="py-5">
+        <div class="container">
+            <p class="text-center m-0 small" style="color: #999999;">&copy; 2026 Giftique Bouquet E-Commerce. All Rights
+                Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Fungsi Utama: Membaca data localStorage dan merender isi tabel keranjang
+        function renderHalamanKeranjangBelanja() {
+            // Tarik array data belanja dari localStorage (Gunakan nama key penyimpanan yang sama)
+            let listKeranjang = JSON.parse(localStorage.getItem('cart_giftique_data')) || [];
+            const tabelBody = document.getElementById('dynamic-cart-table-body');
+
+            let htmlKontenBaris = '';
+            let totalHargaSeluruhnya = 0;
+            let totalKuantitasBarang = 0;
+
+            // Validasi Konten Kondisional: Jika data array kosong, tampilkan info kosong
+            if (listKeranjang.length === 0) {
+                tabelBody.innerHTML = `
+          <tr>
+            <td colspan="5" class="text-center py-5 text-muted">
+              <i class="bi bi-bag-x d-block display-4 mb-3 text-secondary"></i>
+              Keranjang belanja Anda masih kosong.<br>
+              <a href="blog.html" class="btn btn-sm btn-danger rounded-pill mt-3 px-4">Lihat Produk Katalog</a>
+            </td>
+          </tr>
+        `;
+
+                // Update Panel Ringkasan Menjadi Nol & Matikan Fungsi Tombol WA
+                document.getElementById('dynamic-summary-qty').innerText = "0 Pcs";
+                document.getElementById('dynamic-summary-total-price').innerText = "Rp 0";
+                document.getElementById('badge-counter-header').innerText = "0";
+
+                const tombolWA = document.getElementById('dynamic-whatsapp-checkout-btn');
+                tombolWA.classList.add('disabled');
+                tombolWA.href = "#";
+                return;
+            }
+
+            // Loop Array Data Menggunakan Loop forEach untuk Menyusun Baris Tabel HTML
+            listKeranjang.forEach((itemProduk, indeksArray) => {
+                let kalkulasiSubtotalItem = itemProduk.harga * itemProduk.qty;
+                totalHargaSeluruhnya += kalkulasiSubtotalItem;
+                totalKuantitasBarang += itemProduk.qty;
+
+                htmlKontenBaris += `
+          <tr>
+            <td>
+              <div class="d-flex align-items-center gap-3">
+                <img src="${itemProduk.gambar}" alt="${itemProduk.nama}" class="cart-thumb-img">
+                <div>
+                  <h6 class="fw-bold text-dark m-0 small">${itemProduk.nama}</h6>
+                </div>
+              </div>
+            </td>
+            <td class="small fw-medium text-dark">Rp ${itemProduk.harga.toLocaleString('id-ID')}</td>
+            <td class="small fw-semibold text-center text-dark">${itemProduk.qty} Pcs</td>
+            <td class="small fw-bold text-dark">Rp ${kalkulasiSubtotalItem.toLocaleString('id-ID')}</td>
+            <td class="text-center">
+              <button onclick="hapusItemDariKeranjang(${indeksArray})" class="btn btn-sm text-danger border-0" aria-label="Hapus Item">
+                <i class="bi bi-x-circle fs-5"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+            });
+
+            // Injeksikan susunan kode baris string HTML ke dalam tag body tabel
+            tabelBody.innerHTML = htmlKontenBaris;
+
+            // Perbarui Komponen Teks Ringkasan Pembayaran Kolom Kanan
+            document.getElementById('dynamic-summary-qty').innerText = `${totalKuantitasBarang} Pcs`;
+            document.getElementById('dynamic-summary-total-price').innerText = `Rp ${totalHargaSeluruhnya.toLocaleString('id-ID')}`;
+            document.getElementById('badge-counter-header').innerText = totalKuantitasBarang;
+
+            // Konfigurasikan Teks Pesanan Otomatis API WhatsApp dengan teknik perulangan String
+            let draftTeksWA = `Halo Giftique Bouquet, saya ingin melakukan konfirmasi Checkout pemesanan resmi dengan rincian daftar belanja berikut:\n\n`;
+
+            listKeranjang.forEach((item, no) => {
+                draftTeksWA += `${no + 1}. ${item.nama}\n   [ Jumlah: ${item.qty} Pcs x Rp ${item.harga.toLocaleString('id-ID')} ]\n`;
+            });
+
+            draftTeksWA += `\n*Total Estimasi Pembayaran:* Rp ${totalHargaSeluruhnya.toLocaleString('id-ID')}\n\nMohon informasi ketersediaan slot pengerjaan dan detail pengirimannya. Terima kasih!`;
+
+            // Aktifkan tautan URL WhatsApp API tombol checkout
+            const tombolWA = document.getElementById('dynamic-whatsapp-checkout-btn');
+            tombolWA.classList.remove('disabled');
+            tombolWA.href = `https://wa.me/6282340433122?text=${encodeURIComponent(draftTeksWA)}`;
+        }
+
+        // 2. Fungsi Aksi: Menghapus record item dari array berdasarkan parameter indeks
+        function hapusItemDariKeranjang(indeksTarget) {
+            let listKeranjang = JSON.parse(localStorage.getItem('cart_giftique_data')) || [];
+
+            // Lakukan fungsi eliminasi record array menggunakan metode splice native javascript
+            listKeranjang.splice(indeksTarget, 1);
+
+            // Timpa memori localStorage dengan array data terbaru pasca-eliminasi
+            localStorage.setItem('cart_giftique_data', JSON.stringify(listKeranjang));
+
+            // Render ulang seluruh komponen halaman cart secara instan tanpa perlu reload browser
+            renderHalamanKeranjangBelanja();
+        }
+
+        // Daftarkan event listener load halaman
+        window.addEventListener('DOMContentLoaded', renderHalamanKeranjangBelanja);
+    </script>
+
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

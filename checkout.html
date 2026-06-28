@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Proses Pemesanan - Giftique Bouquet</title>
+    <meta name="description" content="Lengkapi informasi pengiriman buket Anda.">
+
+    <link href="assets/img/logo giftique.jpeg" rel="icon">
+    <link href="assets/img/logo giftique.jpeg" rel="apple-touch-icon">
+
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Marcellus&display=swap"
+        rel="stylesheet">
+
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fff5f6;
+            color: #333333;
+            font-size: 16px;
+        }
+
+        h1,
+        h2,
+        h3,
+        .font-premium {
+            font-family: 'Marcellus', serif;
+        }
+
+        .header {
+            z-index: 999;
+            position: sticky;
+            top: 0;
+        }
+
+        .btn-primary-custom {
+            background-color: #ff6b81;
+            color: white;
+            font-weight: 500;
+            padding: 12px 25px;
+            border-radius: 30px;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #e0556a;
+            color: white;
+        }
+
+        .form-box {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            padding: 30px;
+        }
+
+        .item-summary-box {
+            background: #fff5f6;
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .form-control,
+        .form-select {
+            border-radius: 8px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+        }
+
+        .form-control:focus,
+        .form-select:focus {
+            border-color: #ff6b81;
+            box-shadow: 0 0 0 0.2rem rgba(255, 107, 129, 0.15);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar Section -->
+    <header id="header" class="header d-flex align-items-center bg-white py-3"
+        style="box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+            <a href="index.html" class="logo d-flex align-items-center" style="text-decoration: none;">
+                <img src="assets/img/logo giftique.jpeg" alt="Logo"
+                    style="max-height: 45px; margin-right: 10px; border-radius: 50%;">
+                <h1 style="color: #ff6b81; font-weight: bold; margin: 0; font-size: 24px;">Giftique Bouquet</h1>
+            </a>
+            <nav id="navmenu" class="navmenu">
+                <ul class="d-flex list-unstyled gap-4 m-0 align-items-center">
+                    <li><a href="index.html" style="color: #333; font-weight: 500; text-decoration: none;">Home</a></li>
+                    <li><a href="index.html#services" style="color: #333; font-weight: 500; text-decoration: none;">Cara
+                            Order</a></li>
+                    <li><a href="about.html" style="color: #333; font-weight: 500; text-decoration: none;">Tentang
+                            Kami</a></li>
+                    <li><a href="blog.html" style="color: #333; font-weight: 500; text-decoration: none;">Katalog</a>
+                    </li>
+                    <li><a href="contact.html" style="color: #333; font-weight: 500; text-decoration: none;">Hubungi
+                            Kami</a></li>
+                </ul>
+            </nav>
+            <div class="d-flex align-items-center gap-3">
+                <a href="cart.html" class="position-relative" style="color: #333; font-size: 22px;">
+                    <i class="bi bi-bag-heart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="font-size: 10px; padding: 3px 6px;">2</span>
+                </a>
+            </div>
+    </header>
+
+    <main class="py-5">
+        <div class="container py-3">
+            <h2 class="fw-bold mb-4"><i class="bi bi-credit-card-2-front" style="color: #ff6b81;"></i> Informasi
+                Pengiriman</h2>
+
+            <div class="row g-4">
+                <!-- Formulir Data Penerima (Kiri) -->
+                <div class="col-lg-7">
+                    <div class="form-box">
+                        <form id="whatsappForm">
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-bold small">Nama Lengkap Pemesan</label>
+                                <input type="text" id="buyerName" class="form-control" placeholder="Contoh: Andi Wijaya"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-bold small">Nomor WhatsApp Aktif</label>
+                                <input type="tel" id="buyerPhone" class="form-control" placeholder="Contoh: 08123456789"
+                                    required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-bold small">Metode Pengiriman</label>
+                                <select id="shipmentMethod" class="form-select" required>
+                                    <option value="Ambil Sendiri di Toko (Taliwang)">Ambil Sendiri di Toko (Taliwang)
+                                    </option>
+                                    <option value="Kurir Lokal (Kawasan KSB)">Kurir Lokal Antar Alamat (Kawasan KSB)
+                                    </option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-bold small">Alamat Lengkap Pengiriman</label>
+                                <textarea id="buyerAddress" class="form-control" rows="3"
+                                    placeholder="Tuliskan nama jalan, RT/RW, kelurahan, kecamatan di KSB (Isi '-' jika ambil di toko)"></textarea>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label text-dark fw-bold small">Request Custom Teks Kartu
+                                    Ucapan</label>
+                                <textarea id="cardText" class="form-control" rows="2"
+                                    placeholder="Contoh: Happy Graduation, Sahabatku! Semoga sukses selalu. From: Andi"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn-primary-custom w-100 fw-bold mt-3"><i
+                                    class="bi bi-whatsapp"></i> Konfirmasi & Kirim ke WhatsApp</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Detail Pesanan Ringkas (Kanan) -->
+                <div class="col-lg-5">
+                    <div class="form-box">
+                        <h5 class="fw-bold mb-3 text-dark">Daftar Produk</h5>
+                        <div class="item-summary-box mb-3">
+                            <div
+                                class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom border-light">
+                                <span class="small text-dark">Satin Red Elegant (x1)</span>
+                                <span class="small fw-bold">Rp 85.000</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-0">
+                                <span class="small text-dark">Choco Crisp Medium (x1)</span>
+                                <span class="small fw-bold">Rp 65.000</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mb-2 small text-muted">
+                            <span>Total Pembelian</span>
+                            <span>Rp 150.000</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-3 small text-muted">
+                            <span>Ongkos Kirim / Jasa</span>
+                            <span class="text-success">Dihitung Admin</span>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <span class="fw-bold text-dark">Total Tagihan</span>
+                            <span class="fw-bold fs-5" style="color: #ff6b81;">Rp 150.000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer style="background-color: #1a1a1a; color: #ffffff;" class="py-4">
+        <div class="container text-center">
+            <p class="m-0 small text-muted">&copy; 2026 Giftique Bouquet. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Integrasi Nota Otomatis ke WhatsApp Admin -->
+    <script>
+        document.getElementById('whatsappForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('buyerName').value;
+            var phone = document.getElementById('buyerPhone').value;
+            var method = document.getElementById('shipmentMethod').value;
+            var address = document.getElementById('buyerAddress').value || '-';
+            var note = document.getElementById('cardText').value || 'Tidak ada kustomisasi teks';
+
+            var adminWhatsApp = "6282340433122"; // Nomor WA Toko Giftique Bouquet
+
+            var message = "*NOTA PESANAN WEB GIFTIQUE BOUQUET*\n" +
+                "==================================\n" +
+                "*Data Pemesan:*\n" +
+                "• Nama: " + name + "\n" +
+                "• No. WA: " + phone + "\n\n" +
+                "*Detail Pengiriman:*\n" +
+                "• Metode: " + method + "\n" +
+                "• Alamat: " + address + "\n\n" +
+                "*Daftar Produk:*\n" +
+                "1. Satin Red Elegant (1x) - Rp 85.000\n" +
+                "2. Choco Crisp Medium (1x) - Rp 65.000\n" +
+                "• *Subtotal Produk: Rp 150.000*\n\n" +
+                "*Request Kartu Ucapan:*\n" +
+                "\"" + note + "\"\n" +
+                "==================================\n" +
+                "Mohon segera dikonfirmasi ya Admin, terima kasih!";
+
+            var encodeMsg = encodeURIComponent(message);
+            var waUrl = "https://api.whatsapp.com/send?phone=" + adminWhatsApp + "&text=" + encodeMsg;
+
+            window.open(waUrl, '_blank');
+        });
+    </script>
+
+</body>
+
+</html>
